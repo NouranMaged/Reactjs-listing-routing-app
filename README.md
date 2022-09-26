@@ -5,6 +5,7 @@ This project was designed with [Create React App](https://github.com/facebook/cr
 ## Available Scripts
 
 In the project directory, you can run:
+### `npm clone <app>`
 
 ### `npm i`
 
