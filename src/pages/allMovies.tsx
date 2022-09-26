@@ -1,6 +1,5 @@
-import { movies } from "apis/movies-list-api";
-import SearchBar from "components/searchBar";
 import React, { useState } from "react";
+import SearchBar from "components/searchBar";
 import { Link } from "react-router-dom";
 
 interface Props {
@@ -27,7 +26,7 @@ const AllMovies: React.FC = () => {
                   src={movie.image}
                   alt="Your Company"
                 />
-                <div className="container">
+                <div>
                   <h4>
                     <b>{movie.name}</b>
                   </h4>
@@ -37,6 +36,7 @@ const AllMovies: React.FC = () => {
             </Link>
           ))
         ) : (
+          //in case nothing matches the searched word
           <h1>No Movies Maching this Name or Category</h1>
         )}
       </div>

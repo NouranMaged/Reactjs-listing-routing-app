@@ -33,8 +33,11 @@
   border-radius: 5px;
   margin: 10px;
 }
+.card img {
+  margin: 0 auto;
+}
 // Single Movie Page Styling--------------------------
-.coupon {
+.movie-card {
   border: 5px dotted #bbb;
   width: 80%;
   border-radius: 15px;
@@ -47,7 +50,44 @@
   background-color: #f1f1f1;
 }
 
-.promo {
+.movie-card--details {
   background: #ccc;
   padding: 3px;
+}
+//general Loader----------------------------------------
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  text-align: center;
+  margin: 100px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+//Login Page -------------------------------------------
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.login-button {
+  background-color: cornflowerblue !important;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  margin: 20px auto;
 }

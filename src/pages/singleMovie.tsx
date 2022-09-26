@@ -22,7 +22,7 @@ const SingleMovie: React.FC = () => {
   }, []);
 
   const handleMovieDetails = () => {
-    singleMovieAPi.map((movie) => {
+    singleMovieAPi?.map((movie) => {
       if (movie.id == urlParams.movieId) {
         setMovieDetails(movie.movie);
       }
@@ -31,8 +31,12 @@ const SingleMovie: React.FC = () => {
   };
   return (
     <div>
-      {!loading && (
+      {/* loading spinner in case data is not ready to be shown  */}
+      {loading ? (
+        <div className="loader"></div>
+      ) : (
         <>
+          {/* link to previous page  */}
           <Link to={`/movies`} className="btn">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,8 +54,8 @@ const SingleMovie: React.FC = () => {
             </svg>
             Back
           </Link>
-
-          <div className="coupon">
+          {/* single movie card */}
+          <div className="movie-card">
             <div className="container">
               <h3>{movieDetails?.category}</h3>
             </div>
@@ -68,7 +72,9 @@ const SingleMovie: React.FC = () => {
             </div>
             <div className="container">
               <p>Duration : {movieDetails?.duration}</p>
-              <span className="promo">{movieDetails?.minutes}</span>
+              <span className="movie-card--details">
+                {movieDetails?.minutes}
+              </span>
             </div>
           </div>
         </>

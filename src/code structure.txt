@@ -1,0 +1,18 @@
+.
+├── apis/
+│   ├── movie-list-api.js
+│   ├── single-movie-api.js
+├── shared-components/
+│   └── navBar.tsx
+|   └── shared-components.scss
+├── components/
+│   └── components.scss
+│   └── searchBar.tsx
+└── pages/
+    ├── allMovies.tsx
+    └── errorPage.tsx
+    ├── allMovies.tsx
+    ├── seriesPage.tsx
+    ├── singleMovie.tsx
+    ├── login.tsx
+    └── pages.scss

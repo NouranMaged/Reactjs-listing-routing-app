@@ -15,7 +15,7 @@ const navigation: Props[] = [
 class NavBar extends React.Component {
   render(): React.ReactNode {
     return (
-      <div className="topnav">
+      <div className="topnav" id="navBar" style={{ display: "block" }}>
         {navigation?.map((tab, i) => {
           return (
             <a

@@ -1,129 +1,77 @@
-/*
-  This example requires Tailwind CSS v2.0+ 
-  
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
-import { LockClosedIcon } from "@heroicons/react/20/solid";
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+interface Props {
+  username?: string;
+  password?: string;
+}
 const LoginPage: React.FC = () => {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMsg, setErrorMsg] = useState<Props>({
+    username: "",
+    password: "",
+  });
+  //handle show and hide navbar in login page
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    handleNavBar("none");
+  });
+  const handleNavBar = (display: string) => {
+    let navbar: any = document.getElementById("navBar");
+    navbar.style.display = display;
+  };
+  //submit form function
+  const handleLogin = (userName: string, password: string) => {
+    if (password.length < 5) {
+      setErrorMsg({ password: "Password should be more than 5 digits!" });
+    } else if (userName === "") {
+      setErrorMsg({ username: "User name can't be empty!" });
+    } else {
+      navigate("/movies");
+      handleNavBar("block");
+    }
+  };
+
+  //handle username and password
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    let name = event.target.name;
+    let value = event.target.value;
+    setErrorMsg({});
+    name === "username" ? setUserName(value) : setPassword(value);
+  };
   return (
     <>
-      {/*
-        This example requires updating your template:
+      <div className="container">
+        <b>Username</b>
 
-        ```
-        <html class="h-full bg-gray-50">
-        <body class="h-full">
-        ```
-      */}
-      <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-md space-y-8">
-          <div>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="Your Company"
-            />
-            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-              Sign in to your account
-            </h2>
-            <p className="mt-2 text-center text-sm text-gray-600">
-              Or{" "}
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                start your 14-day free trial
-              </a>
-            </p>
-          </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
-            <input type="hidden" name="remember" defaultValue="true" />
-            <div className="-space-y-px rounded-md shadow-sm">
-              <div>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  id="email-address"
-                  name="email"
-                  type="email"
-                  autoComplete="email"
-                  required
-                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Email address"
-                />
-              </div>
-              <div>
-                <label htmlFor="password" className="sr-only">
-                  Password
-                </label>
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
-                  required
-                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
-                  placeholder="Password"
-                />
-              </div>
-            </div>
+        <input
+          type="text"
+          placeholder="Enter Username"
+          name="username"
+          required
+          value={userName}
+          onChange={handleChange}
+        />
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg.username}</p>}
 
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <input
-                  id="remember-me"
-                  name="remember-me"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                />
-                <label
-                  htmlFor="remember-me"
-                  className="ml-2 block text-sm text-gray-900"
-                >
-                  Remember me
-                </label>
-              </div>
-
-              <div className="text-sm">
-                <a
-                  href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                className="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  <LockClosedIcon
-                    className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400"
-                    aria-hidden="true"
-                  />
-                </span>
-                Sign in
-              </button>
-            </div>
-          </form>
-        </div>
+        <b>Password</b>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          name="psw"
+          required
+          value={password}
+          onChange={handleChange}
+        />
+        {errorMsg && <p style={{ color: "red" }}>{errorMsg.password}</p>}
+        <button
+          type="submit"
+          className="login-button"
+          onClick={() => handleLogin(userName, password)}
+        >
+          Login
+        </button>
       </div>
     </>
   );

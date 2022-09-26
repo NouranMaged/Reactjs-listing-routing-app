@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NavBar from "shared-components/navBar";
 import App from "./App";
 import "./index.css";
+import "./index.css";
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,7 @@
-import { movies } from "apis/movies-list-api";
 import React, { useEffect, useState } from "react";
 import "./components.scss";
+import { movies } from "apis/movies-list-api";
+
 interface Props {
   setMoviesList: any;
 }
