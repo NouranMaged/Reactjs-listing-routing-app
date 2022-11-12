@@ -1,8 +1,19 @@
 import React, { useState } from "react";
+import { Provider } from "react-redux";
+import store from "redux/store";
+import HooksCakeContainer from "reduxComponents/hooksCakeContainer";
+import HooksIceCreamContainer from "reduxComponents/hooksIceCreamContainer";
+import HooksJellyContainer from "reduxComponents/hooksJellyContainer";
 import "./pages.scss";
 class SeriesPage extends React.Component {
   render(): React.ReactNode {
-    return <h1 className="center">Coming Soon!</h1>;
+    return (
+      <Provider store={store}>
+        <HooksJellyContainer />
+        <HooksCakeContainer />
+        <HooksIceCreamContainer />
+      </Provider>
+    );
   }
 }
 export default SeriesPage;

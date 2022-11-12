@@ -1,5 +1,7 @@
 import AllMovies from "pages/allMovies";
+import CartoonsPage from "pages/cartoonsPage";
 import ErrorPage from "pages/errorPage";
+import PlanRadar from "pages/planRadar";
 import SeriesPage from "pages/seriesPage";
 import SingleMovie from "pages/singleMovie";
 import React from "react";
@@ -32,7 +34,11 @@ const router = createBrowserRouter([
   },
   {
     path: "Cartoons",
-    element: <SeriesPage />,
+    element: <CartoonsPage />,
+  },
+  {
+    path: "PlanRadar",
+    element: <PlanRadar />,
   },
   {
     path: "movies/:movieId",

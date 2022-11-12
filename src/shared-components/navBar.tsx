@@ -7,9 +7,10 @@ interface Props {
   current: boolean;
 }
 const navigation: Props[] = [
-  { name: "Movies", href: "/movies", current: true },
+  { name: "Movies", href: "/movies", current: false },
   { name: "Series", href: "/series", current: false },
   { name: "Cartoons", href: "/Cartoons", current: false },
+  { name: "PlanRadar", href: "/PlanRadar", current: true },
 ];
 
 class NavBar extends React.Component {

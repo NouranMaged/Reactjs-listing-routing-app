@@ -28,7 +28,7 @@ const LoginPage: React.FC = () => {
     } else if (userName === "") {
       setErrorMsg({ username: "User name can't be empty!" });
     } else {
-      navigate("/movies");
+      navigate("/PlanRadar");
       handleNavBar("block");
     }
   };
